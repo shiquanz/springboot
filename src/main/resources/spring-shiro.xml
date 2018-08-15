@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+					    http://www.springframework.org/schema/context/spring-context.xsd
+					    http://www.springframework.org/schema/aop
+					    http://www.springframework.org/schema/aop/spring-aop.xsd
+					    http://www.springframework.org/schema/tx
+					    http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="loginUrl" value="/jsp/login.jsp"></property>
+		<property name="securityManager" ref="securityManager"></property>
+		<property name="filterChainDefinitions">
+			<value>
+
+                    /** = anon
+			</value>
+		</property>
+	</bean>
+	<!-- 安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myRealmByMD5"/>
+	</bean>
+	<!-- 自定义realm -->
+	<bean id="myRealmByMD5" class="com.djs.springboot.realm.MyRealmByMD5">
+	</bean>
+
+	<!-- 定义rememberMe管理器 -->
+	<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+		<property name="cookie" ref="cookie"/>
+	</bean>
+	<!-- 定义cookie -->
+	<bean id="cookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<!-- 定义cookie名字，否则cooki管理页面找不到 -->
+		<property name="name" value="cmfzCookie"/>
+		<!-- cookie 的生命周期 单位（秒） -->
+		<property name="maxAge" value="36000"/>
+	</bean>
+</beans>

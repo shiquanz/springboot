@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.djs.springboot.dao.AdminDao">
+
+    <select id="selectAll" resultType="Admin">
+        select * from shiro_admin
+    </select>
+
+    <insert id="insert" >
+        insert into shiro_admin values(uuid(),#{username},#{password},#{beforePassword},#{passwordSalt},0)
+    </insert>
+
+    <delete id="delete">
+        delete from shiro_admin where id in
+        <foreach collection="array" open="(" close=")" separator="," item="ids">#{ids}</foreach>
+    </delete>
+
+    <update id="update">
+        update shiro_admin set username=#{username},version=version+1 where id=#{id} and version=#{version}
+    </update>
+
+    <select id="selectOne" resultType="Admin">
+        select * from shiro_admin where id=#{id}
+    </select>
+
+
+
+</mapper>

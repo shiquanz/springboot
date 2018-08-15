@@ -1,0 +1,4 @@
+2018-08-13 22:03:42,077 INFO (StartupInfoLogger.java:50)- Starting SpringbootApplication on DESKTOP-BS23KFK with PID 4936 (F:\ideaspace\springboot\target\classes started by dell in F:\ideaspace\springboot)
+2018-08-13 22:03:42,081 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.0.4.RELEASE, Spring v5.0.8.RELEASE
+2018-08-13 22:03:42,090 INFO (SpringApplication.java:666)- The following profiles are active: dev
+2018-08-13 22:04:01,879 INFO (StartupInfoLogger.java:59)- Started SpringbootApplication in 21.323 seconds (JVM running for 24.503)

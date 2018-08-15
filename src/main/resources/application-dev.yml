@@ -1,0 +1,44 @@
+#修改端口号server：
+server:
+  port: 8081
+  servlet:
+    context-path: /springboot
+#数据源
+spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/baizhi?useUnicode=true&character=UTF-8
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    database: 0
+    port: 6379
+    host: 127.0.0.1
+#配置视图解析器
+  mvc:
+   view:
+     prefix: /
+     suffix: .jsp
+
+#mybaits的mapper文件扫描
+mybatis:
+  mapper-locations: classpath:com/djs/mapper/*Mapper.xml
+  type-aliases-package: com.djs.springboot.entity
+
+#自定义 全局文件上传路径
+upload:
+  imagePath: /productImage
+
+#指定数据库类型
+pagehelper:
+  auto-dialect: mysql
+#log4j2
+logging:
+  config: classpath:log4j2.yml
+
+
+
+
+
+
